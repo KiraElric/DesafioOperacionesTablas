@@ -1,0 +1,12 @@
+id,fecha,hora,contenido,id_post
+1,2020-03-22,13:30:00,Comentario 1 post Pamela,1
+2,2020-04-12,20:45:20,Comentario 2 post Pamela,2
+3,2020-07-19,10:00:12,Comentario 1 post Carlos,6
+4,2020-07-20,11:20:05,Comentario 2 post Carlos,6
+5,2020-07-20,15:40:55,Comentario 3 post Carlos,6
+6,2020-07-19,09:55:40,Comentario 4 post Carlos,6
+7,2020-07-20,08:00:15,Comentario 1 post Margarita,7
+8,2020-07-20,10:00:00,Comentario 2 post Margarita,7
+9,2020-07-20,12:25:30,Comentario 3 post Margarita,7
+10,2020-07-20,16:28:58,Comentario 4 post Margarita,7
+11,2020-07-20,19:00:44,Comentario 5 post Margarita,7
