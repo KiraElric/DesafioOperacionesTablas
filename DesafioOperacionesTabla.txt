@@ -1,0 +1,82 @@
+//Creacion de la base de Datos
+CREATE DATABASE posts;
+
+//Creacion de la tabla post
+CREATE TABLE post(                                                                    
+  id SERIAL,                                                                                      
+  nombre_usuario VARCHAR(25) NOT NULL,                                                                  
+  fecha_creacion DATE,                                                                         
+  contenido VARCHAR,                                                                      
+  descripcion VARCHAR,
+  PRIMARY KEY (id)
+  );
+
+//Insercion de dos post para Pamela y uno para Carlos
+INSERT INTO post (nombre_usuario, fecha_creacion, contenido, descripcion) 
+VALUES ('Pamela', '2020-03-20', 'Post 1', 'Post de Pamela');
+INSERT INTO post (nombre_usuario, fecha_creacion, contenido, descripcion) 
+VALUES ('Pamela', '2020-04-12', 'Post 2', 'Post 2 de Pamela');
+INSERT INTO post (nombre_usuario, fecha_creacion, contenido, descripcion) 
+VALUES ('Carlos', '2020-05-28', 'Post 1', 'Post de Carlos');
+
+//Agregar la columna titulo en la tabla post
+ALTER TABLE post ADD COLUMN titulo VARCHAR;
+
+//Agregar titulos a los post ya ingresados
+UPDATE post SET titulo='Post 1 de Pamela' WHERE id=1;
+UPDATE post SET titulo='Post 2 de Pamela' WHERE id=2;
+UPDATE post SET titulo='Post 1 de Carlos' WHERE id=3;
+
+//Insertar dos post de Pedro
+INSERT INTO post (nombre_usuario, fecha_creacion, contenido, descripcion, titulo) 
+VALUES ('Pedro', '2020-02-10', 'Post 1', 'Post de Pedro', 'Post 1 de Pedro');
+INSERT INTO post (nombre_usuario, fecha_creacion, contenido, descripcion, titulo) 
+VALUES ('Pedro', '2020-06-15', 'Post 2', 'Post de Pedro', 'Post 2 de Pedro);
+
+//Borrar el post de Carlos
+DELETE FROM post WHERE nombre_usuario='Carlos';
+
+//Ingresar un post de Carlos
+INSERT INTO post (nombre_usuario, fecha_creacion, contenido, descripcion, titulo) 
+VALUES ('Carlos', '2020-07-18', 'Post 2', 'Post de Carlos', 'Post 2 de Carlos');
+
+//Creacion de la tabla comentarios
+CREATE TABLE comentarios(
+  id SERIAL,
+  fecha DATE,
+  hora TIME,
+  contenido VARCHAR,
+  id_post INT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (id_post) REFERENCES post(id)
+);
+
+//Insertar 2 comentarios en el post de Pamela y cuatro comentarios en el post de Carlos
+INSERT INTO comentarios (fecha, hora, contenido, id_post) 
+VALUES ('2020-03-22', '13:30:00', 'Comentario 1 post Pamela', 1);
+INSERT INTO comentarios (fecha, hora, contenido, id_post) 
+VALUES ('2020-04-12', '20:45:20', 'Comentario 2 post Pamela', 2);
+INSERT INTO comentarios (fecha, hora, contenido, id_post) 
+VALUES ('2020-07-19', '10:00:12', 'Comentario 1 post Carlos', 6);
+INSERT INTO comentarios (fecha, hora, contenido, id_post) 
+VALUES ('2020-07-20', '11:20:05', 'Comentario 2 post Carlos', 6);
+INSERT INTO comentarios (fecha, hora, contenido, id_post) 
+VALUES ('2020-07-20', '15:40:55', 'Comentario 3 post Carlos', 6);
+INSERT INTO comentarios (fecha, hora, contenido, id_post) 
+VALUES ('2020-07-19', '09:55:40', 'Comentario 4 post Carlos', 6);
+
+//Insertar un post de Margarita
+INSERT INTO post (nombre_usuario, fecha_creacion, contenido, descripcion, titulo) 
+VALUES ('Margarita', '2020-07-20', 'Post 1', 'Post de Margarita', 'Post 1 de Margarita');
+
+//Insertar cinco comentarios para el post de Margarita
+INSERT INTO comentarios (fecha, hora, contenido, id_post) 
+VALUES ('2020-07-20', '08:00:15', 'Comentario 1 post Margarita', 7);
+INSERT INTO comentarios (fecha, hora, contenido, id_post) 
+VALUES ('2020-07-20', '10:00:00', 'Comentario 2 post Margarita', 7);
+INSERT INTO comentarios (fecha, hora, contenido, id_post) 
+VALUES ('2020-07-20', '12:25:30', 'Comentario 3 post Margarita', 7);
+INSERT INTO comentarios (fecha, hora, contenido, id_post) 
+VALUES ('2020-07-20', '16:28:58', 'Comentario 4 post Margarita', 7);
+INSERT INTO comentarios (fecha, hora, contenido, id_post) 
+VALUES ('2020-07-20', '19:00:44', 'Comentario 5 post Margarita', 7);
